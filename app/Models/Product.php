@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name'
+    ];
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'products_x_tags', 'tag_id', 'product_id');
+    }
 }
