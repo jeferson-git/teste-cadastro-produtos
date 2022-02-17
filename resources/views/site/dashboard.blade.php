@@ -2,36 +2,58 @@
 
 @section('content')
     <section class="container mt-5 ">
-        <div class="card ">
+        <div class="card">
             <div class="card-body">
-                <h1 class="py-4">Cadastro de Produtos: </h1>
-                <form class="row gy-2 gx-3">
-                    <div class=" col-md-5 com-sm-12">
-                        <label class="" for="product">Produto</label>
-                        <input type="text" class="form-control" id="product" placeholder="Digite o nome do produto...">
+                <div class="row d-flex">
+                    <div class="col d-flex justify-content-start ">
+                        <h1 class="py-4">Lista de Produtos: </h1>
                     </div>
-                    <div class=" col-md-5 com-sm-12">
-                        <label class="" for="tag">Categorias</label>
-                        <select class="form-select" id="tag">
-                            <option selected>Escolha a categoria..</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                    <div class="col d-flex justify-content-end align-self-center ">
+                        <button type="submit" class="btn btn-success">Cadastrar novo Produto</button>
                     </div>
-                    <div class=" col-md-2 com-sm-12">
-                        <label class="" for="product">Quantidade</label>
-                        <input type="text" class="form-control" id="product" placeholder="Digite a quantidade...">
-                    </div>
-                    <div class="col-md-12 com-sm-12 mb-3">
-                        <label for="description" class="form-label">Descrição</label>
-                        <textarea class="form-control" id="description" rows=6></textarea>
-                    </div>
-                    <div class=" d-flex justify-content-end ">
-                        <button type="submit" class="btn btn-secondary me-3">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Cadastrar</button>
-                    </div>
-                </form>
+                </div>
+                <table class="table table-responsive text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Qauntidade</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Caneta</td>
+                            <td>Material Escolar</td>
+                            <td>Caneta azul, Bic</td>
+                            <td>250</td>
+                            <td><button type="button" class="btn btn-sm btn-outline-warning">Editar</button></td>
+                            <td><button type="button" class="btn btn-sm btn-outline-danger">Excluir</button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Caneta</td>
+                            <td>Material Escolar</td>
+                            <td>Caneta azul, Bic</td>
+                            <td>250</td>
+                            <td><button type="button" class="btn btn-sm btn-outline-warning">Editar</button></td>
+                            <td><button type="button" class="btn btn-sm btn-outline-danger">Excluir</button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Caneta</td>
+                            <td>Material Escolar</td>
+                            <td>Caneta azul, Bic</td>
+                            <td>250</td>
+                            <td><button type="button" class="btn btn-sm btn-outline-warning">Editar</button></td>
+                            <td><button type="button" class="btn btn-sm btn-outline-danger">Excluir</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
