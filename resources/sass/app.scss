@@ -1,0 +1,21 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+.teste {
+    border: 1px solid red;
+}
+
+.bg-login {
+    background-color: darkcyan;
+}
+
+.bg-form-product {
+    background-color: darkcyan;
+}

@@ -21,12 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('register', [RegisterController::class, 'index']);
 Route::post('register', [RegisterController::class, 'store']);
 
-Route::post('login', [AuthController::class, 'login']);
-
 //Rotas Privadas
-Route::group(['middleware' => ['auth:sanctum']], function () 
+Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'dashboard'], function () 
 {
+    Route::apiResource('product', ProductController::class);
     Route::post('logout', [AuthController::class, 'logout']);
 });
-
-Route::apiResource('product', ProductController::class);
