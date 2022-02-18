@@ -9,7 +9,7 @@
                         <h1 class="py-4">Lista de Produtos: </h1>
                     </div>
                     <div class="col d-flex justify-content-end align-self-center ">
-                        <button type="submit" class="btn btn-success">Cadastrar novo Produto</button>
+                        <a href="{{ route('product.create')}}" class="btn btn-success">Cadastrar novo Produto</a>
                     </div>
                 </div>
                 <table class="table table-responsive text-center">
@@ -24,7 +24,7 @@
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         <tr>
                             <th scope="row">1</th>
                             <td>Caneta</td>
