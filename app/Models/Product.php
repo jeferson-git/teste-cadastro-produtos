@@ -15,6 +15,6 @@ class Product extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'products_x_tags', 'tag_id', 'product_id');
+        return $this->belongsToMany(Tag::class, 'products_x_tags')->withPivot(['amount']);
     }
 }
