@@ -42,6 +42,7 @@ Route::middleware('auth')->prefix('dashboard')->group( function ()
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::post('filter', [ProductController::class, 'filter'])->name('product.filter');
+    Route::get('filter', [ProductController::class, 'filter'])->name('product.filter');
 });
 
 

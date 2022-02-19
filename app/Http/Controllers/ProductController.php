@@ -130,7 +130,7 @@ class ProductController extends Controller
         $products = Product::with('tags')->where('name', 'like', $fields.'%')->get();
         $products = $products->merge(Product::with('tags')->whereRelation('tags', 'name', 'like', $fields.'%')->get());
 
-        return view('site.dashboard', ['products' => $products]);
+        return view('site.dashboard', ['products' => $products, 'paginate' => 'none']);
         
     }
 }
