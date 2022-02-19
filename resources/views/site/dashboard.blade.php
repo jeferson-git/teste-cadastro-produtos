@@ -1,7 +1,8 @@
 @extends('layouts.basic')
 
 @section('content')
-    <section class="container mt-5 ">
+<section class="container mt-5 ">
+        @yield('top-navbar')
         <div class="card">
             <div class="card-body">
                 <div class="row d-flex">
@@ -9,7 +10,7 @@
                         <h1 class="py-4">Lista de Produtos: </h1>
                     </div>
                     <div class="col d-flex justify-content-end align-self-center ">
-                        <a href="{{ route('product.create')}}" class="btn btn-success">Cadastrar novo Produto</a>
+                        <a href="{{ route('product.create') }}" class="btn btn-success">Cadastrar novo Produto</a>
                     </div>
                 </div>
                 <table class="table table-responsive text-center">
@@ -24,34 +25,22 @@
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody >
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Caneta</td>
-                            <td>Material Escolar</td>
-                            <td>Caneta azul, Bic</td>
-                            <td>250</td>
-                            <td><button type="button" class="btn btn-sm btn-outline-warning">Editar</button></td>
-                            <td><button type="button" class="btn btn-sm btn-outline-danger">Excluir</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Caneta</td>
-                            <td>Material Escolar</td>
-                            <td>Caneta azul, Bic</td>
-                            <td>250</td>
-                            <td><button type="button" class="btn btn-sm btn-outline-warning">Editar</button></td>
-                            <td><button type="button" class="btn btn-sm btn-outline-danger">Excluir</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Caneta</td>
-                            <td>Material Escolar</td>
-                            <td>Caneta azul, Bic</td>
-                            <td>250</td>
-                            <td><button type="button" class="btn btn-sm btn-outline-warning">Editar</button></td>
-                            <td><button type="button" class="btn btn-sm btn-outline-danger">Excluir</button></td>
-                        </tr>
+                    <tbody>
+                        @foreach ($products as $product)
+                            @foreach ($product->tags as $tag)
+                                <tr>
+                                    <th scope="row">{{ $product->id }}</th>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $tag->name }}</td>
+                                    <td>{{ $product->description }}</td>
+                                    <td>{{ $tag->pivot->amount }}</td>
+                                    <td><a href="{{ route('product.edit', $product) }}" type="button"
+                                            class="btn btn-sm btn-outline-warning">Editar</a></td>
+                                    <td><a href="{{ route('product.destroy', $product) }}" type="button"
+                                            class="btn btn-sm btn-outline-danger">Excluir</a></td>
+                                </tr>
+                            @endforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>

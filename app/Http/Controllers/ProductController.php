@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,8 +24,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $tags = Tag::all();
+
+        return view('form.product', ['tags' => $tags]);
     }
 
     /**
@@ -34,7 +38,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'required|max:50',
+            'tag' => 'required|integer',
+            'amount' => 'required|integer',
+            'description' => 'max:300'
+        ]);
+
+        $product = Product::create([
+            'name' => $fields['name'],
+            'description' => $fields['description']
+        ]);
+
+        $product->tags()->attach($fields['tag'], ['amount' => $fields['amount']]);
+
+        return redirect('dashboard');
     }
 
     /**
@@ -56,7 +74,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $tags = Tag::all();
+
+        return view('form.product', ['product' => $product, 'tags' => $tags]);
     }
 
     /**
@@ -68,7 +89,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'required|max:50',
+            'tag' => 'required|integer',
+            'amount' => 'required|integer',
+            'description' => 'max:300'
+        ]);
+
+        $product = Product::find($id);
+        $product->update($fields);
+
+        return redirect('dashboard');
+
     }
 
     /**
