@@ -24,4 +24,10 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+// document.addEventListener("DOMContentLoaded", function(e) {
+    
+//     function filter() {
+//         var filterInput = document.querySelector(".filtro");
+//         console.log(filterInput.value);
+//     }
+// });
