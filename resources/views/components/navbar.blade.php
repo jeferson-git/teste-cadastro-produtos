@@ -2,7 +2,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-login static-top">
         <div class="container">
-            <a class="navbar-brand px-2" href="#">
+            <a class="navbar-brand px-2" href="{{ route('index.dashboard')}}">
                 <img src="https://ci4.googleusercontent.com/proxy/yZ6-4S1vDTyGVLoBz0t7mQ5EdMqS6nnJ2HkhzdMFbThbn63ZJAGIODYRc7ronTDmJQQGYdSH5kQepUmOm7FEC-0o7Yb0Lfs1b9ewNR0t_U9m385GrDm4t5__4iai4IOyNp5oINabrUTZzi-XGZdGSA9Xo1MzTj-Kzw=s0-d-e1-ft#https://s3.amazonaws.com/gupy5/production/companies/7298/career/15553/images/2021-06-30_18-29_logo.jpg"
                     alt="..." height="45">
             </a>
