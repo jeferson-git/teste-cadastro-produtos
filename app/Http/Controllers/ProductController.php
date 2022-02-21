@@ -100,8 +100,9 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->update($fields);
 
-        return redirect('dashboard');
+        $product->tags()->syncWithPivotValues([$fields['tag']], ['amount' => $fields['amount']]);
 
+        return redirect('dashboard');
     }
 
     /**

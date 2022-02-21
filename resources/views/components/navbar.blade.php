@@ -2,7 +2,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-login static-top">
         <div class="container">
-            <a class="navbar-brand px-2" href="#">
+            <a class="navbar-brand px-2" href="{{ route('index.dashboard')}}">
                 <img src="https://ci4.googleusercontent.com/proxy/yZ6-4S1vDTyGVLoBz0t7mQ5EdMqS6nnJ2HkhzdMFbThbn63ZJAGIODYRc7ronTDmJQQGYdSH5kQepUmOm7FEC-0o7Yb0Lfs1b9ewNR0t_U9m385GrDm4t5__4iai4IOyNp5oINabrUTZzi-XGZdGSA9Xo1MzTj-Kzw=s0-d-e1-ft#https://s3.amazonaws.com/gupy5/production/companies/7298/career/15553/images/2021-06-30_18-29_logo.jpg"
                     alt="..." height="45">
             </a>
@@ -17,12 +17,16 @@
                         <a class="nav-link" href="#">Relatório</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Cadastro de Categorias</a>
+                        @if (isset(explode('/', Request::url())[4]) && explode('/', Request::url())[4] == 'tag')
+                            <a class="nav-link" href="{{ route('index.dashboard') }}">Dahsboard</a>
+                        @else
+                            <a class="nav-link" href="{{ route('tag.index') }}">Cadastro de Categorias</a>
+                        @endif
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout')}}">Logout</a>
+                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
                     </li>
                 </ul>
             </div>
