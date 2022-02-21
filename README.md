@@ -59,12 +59,12 @@ Com esses comandos a aplicação já esta funcional com a base de dados populada
 
 Env.
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=cadastro_produtos
-DB_USERNAME=root
-DB_PASSWORD=
+- DB_CONNECTION=mysql
+- DB_HOST=127.0.0.1
+- DB_PORT=3306
+- DB_DATABASE=cadastro_produtos
+- DB_USERNAME=root
+- DB_PASSWORD=
 
 Mas caso queira o SQL ->
 
