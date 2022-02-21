@@ -41,13 +41,14 @@ Laravel 8
 Bootstrap 5
 ---------------------------------
 Git clone https://github.com/jeferson-git/teste-cadastro-produtos.git 
-Composer install
-Npm install
-Php artisan migrate
-Php artisan db:seed
-Php artisan key:generate
-Npm run watch
-Php artisan serve
+
+- Composer install
+- Npm install
+- Php artisan migrate
+- Php artisan db:seed
+- Php artisan key:generate
+- Npm run watch
+- Php artisan serve
 
 Usuário : admin@teste.com
 Senha : 123456
