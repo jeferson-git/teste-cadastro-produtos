@@ -12,9 +12,11 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $tags = Tag::paginate(10);
+
+        return view('site.tag', ['tags' => $tags, 'request' => $request->all()]);
     }
 
     /**
@@ -24,7 +26,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('form.tag');
     }
 
     /**
@@ -35,7 +37,15 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'required|max:50',
+        ]);
+
+        Tag::create([
+            'name' => $fields['name'],
+        ]);
+
+        return redirect('dashboard/tag');
     }
 
     /**
@@ -55,9 +65,10 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit($id)
     {
-        //
+        $tag = Tag::find($id);
+        return view('form.tag', ['tag' => $tag]);
     }
 
     /**
@@ -67,9 +78,30 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, $id)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'required|max:50',
+        ]);
+
+        $tag = Tag::find($id);
+        $tag->update($fields);
+
+        return redirect('dashboard/tag');
+    }
+
+    public function filter(Request $request)
+    {
+        $fields = $request->filter;
+        if (!$fields) {
+            $tags = Tag::paginate(10);
+
+            return view('site.tag', ['tags' => $tags, 'request' => $request->all()]);
+        }
+
+        $tags = Tag::where('name', 'like', $fields . '%')->paginate(10);
+
+        return view('site.tag', ['tags' => $tags]);
     }
 
     /**
@@ -78,8 +110,11 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
-        //
+        $tag = Tag::find($id);
+        $tag->delete();
+
+        return redirect('dashboard/tag');
     }
 }

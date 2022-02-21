@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TagController;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -38,11 +40,17 @@ Route::post('register', [RegisterController::class, 'store'])->name('register.st
 Route::middleware('auth')->prefix('dashboard')->group( function () 
 {
     Route::get('/', [DashboardController::class, 'index'])->name('index.dashboard');
-    Route::resource('product', ProductController::class);
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    
+    Route::get('filter-tag', [TagController::class, 'filter'])->name('tag.filter');
+    Route::post('filter-tag', [TagController::class, 'filter'])->name('tag.filter');
 
-    Route::post('filter', [ProductController::class, 'filter'])->name('product.filter');
     Route::get('filter', [ProductController::class, 'filter'])->name('product.filter');
+    Route::post('filter', [ProductController::class, 'filter'])->name('product.filter');
+
+    Route::resource('product', ProductController::class);
+    Route::resource('tag', TagController::class);
+
 });
 
 

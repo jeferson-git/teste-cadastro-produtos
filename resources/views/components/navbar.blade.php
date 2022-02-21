@@ -17,12 +17,16 @@
                         <a class="nav-link" href="#">Relatório</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Cadastro de Categorias</a>
+                        @if (isset(explode('/', Request::url())[4]) && explode('/', Request::url())[4] == 'tag')
+                            <a class="nav-link" href="{{ route('index.dashboard') }}">Dahsboard</a>
+                        @else
+                            <a class="nav-link" href="{{ route('tag.index') }}">Cadastro de Categorias</a>
+                        @endif
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout')}}">Logout</a>
+                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
                     </li>
                 </ul>
             </div>

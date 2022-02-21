@@ -8,6 +8,7 @@
     <title>Laravel</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="cache-control" content="no-cache" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
