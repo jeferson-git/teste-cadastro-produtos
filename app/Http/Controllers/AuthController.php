@@ -17,7 +17,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($fields)) {
-            return redirect()->intended('dashboard/');
+            return redirect('dashboard');
         }
 
         return view('site.home', ['invalidCredentials' => 1]);
@@ -27,5 +27,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
+
+        return redirect('/');
     }
 }

@@ -39,7 +39,9 @@ Route::middleware('auth')->prefix('dashboard')->group( function ()
 {
     Route::get('/', [DashboardController::class, 'index'])->name('index.dashboard');
     Route::resource('product', ProductController::class);
-    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::post('filter', [ProductController::class, 'filter'])->name('product.filter');
 });
 
 

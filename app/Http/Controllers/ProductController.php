@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -111,6 +112,25 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect('dashboard');
+    }
+
+    public function filter(Request $request)
+    {
+        $fields = $request->filter;
+        if(!$fields) {
+            $products = Product::with('tags')->paginate(10);
+
+            return view('site.dashboard', ['products' => $products, 'request' => $request->all()]);
+        }
+        
+        $products = Product::with('tags')->where('name', 'like', $fields.'%')->get();
+        $products = $products->merge(Product::with('tags')->whereRelation('tags', 'name', 'like', $fields.'%')->get());
+
+        return view('site.dashboard', ['products' => $products]);
+        
     }
 }
