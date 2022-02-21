@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,11 +13,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {   
-        $products = Product::with('tags')->paginate(10);    
-
-        return view('site.dashboard', ['products' => $products, 'request' => $request->all()]);
+    public function index()
+    {
+        //
     }
 
     /**
@@ -25,8 +24,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $tags = Tag::all();
+
+        return view('form.product', ['tags' => $tags]);
     }
 
     /**
@@ -37,16 +38,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'required|max:50',
+            'tag' => 'required|integer',
+            'amount' => 'required|integer',
+            'description' => 'max:300'
+        ]);
+
+        $product = Product::create([
+            'name' => $fields['name'],
+            'description' => $fields['description']
+        ]);
+
+        $product->tags()->attach($fields['tag'], ['amount' => $fields['amount']]);
+
+        return redirect('dashboard');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
         //
     }
@@ -54,33 +69,47 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $tags = Tag::all();
+
+        return view('form.product', ['product' => $product, 'tags' => $tags]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'required|max:50',
+            'tag' => 'required|integer',
+            'amount' => 'required|integer',
+            'description' => 'max:300'
+        ]);
+
+        $product = Product::find($id);
+        $product->update($fields);
+
+        return redirect('dashboard');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         //
     }

@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Rotas Públicas
-Route::get('register', [RegisterController::class, 'index']);
-Route::post('register', [RegisterController::class, 'store']);
+// // Rotas Públicas
+// Route::get('register', [RegisterController::class, 'index']);
+// Route::post('register', [RegisterController::class, 'store']);
 
-//Rotas Privadas
-Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'dashboard'], function () 
-{
-    Route::apiResource('product', ProductController::class);
-    Route::post('logout', [AuthController::class, 'logout']);
-});
+// //Rotas Privadas
+// Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'dashboard'], function () 
+// {
+//     Route::apiResource('product', ProductController::class);
+//     Route::post('logout', [AuthController::class, 'logout']);
+// });

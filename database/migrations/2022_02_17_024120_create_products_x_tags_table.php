@@ -20,6 +20,8 @@ class CreateProductsXTagsTable extends Migration
 
             $table->unsignedBigInteger('tag_id');
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+
+            $table->integer('amount');
         });
     }
 

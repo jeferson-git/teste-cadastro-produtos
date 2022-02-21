@@ -10,11 +10,12 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'description'
     ];
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'products_x_tags', 'tag_id', 'product_id');
+        return $this->belongsToMany(Tag::class, 'products_x_tags')->withPivot(['amount']);
     }
 }
