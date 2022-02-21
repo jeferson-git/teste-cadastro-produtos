@@ -39,11 +39,22 @@ Configuração :
 Php 7.4+
 Laravel 8
 Bootstrap 5
+Xampp 3.2.3
 ---------------------------------
-Git clone https://github.com/jeferson-git/teste-cadastro-produtos.git 
 
+
+- Dentro de htdoc
+- Git clone https://github.com/jeferson-git/teste-cadastro-produtos.git 
 - Composer install
 - Npm install
+- Necessario criar o DataBase com o nome "cadastro_produtos" - ou se preferir outro nome, teria que mudar no arquivo .env.example "DB_DATABASE={{ Novo Nome }}"
+
+- verificar as senhas de acesso ao Database, as que estão configuradas são as senhas e usuario default : root@root
+ DB_USERNAME="usuario database"
+ DB_PASSWORD="senha database"
+
+- Renomear o arquivo .env.example para .env
+
 - Php artisan migrate
 - Php artisan db:seed
 - Php artisan key:generate
