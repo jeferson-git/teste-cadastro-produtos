@@ -27,9 +27,9 @@ Uma das maiores dificuldades que tenho é o fato de não ter contato com ningué
 
 3.	Tempo: Comecei o teste no dia 17/02 – no dia 18/02 tive problemas de internet e como eu trabalho em dois lugar diferentes, ficou meio apertado o tempo para criar algumas coisas que gostaria de mostrar, principalmente em mensagens de feedback. Mas tentei mostrar ao longo do projeto o meu conhecimento – responsividade, componentes.
 
-4.	Api:  Na atual empresa atuo mais como Back-end, e como o teste foi baseado em uma aplicação monolítica fique um pouco perdido no início com as rotas.
+4.	Api:  Na atual empresa atuo mais como Back-end, e como o teste foi baseado em uma aplicação monolítica fique um pouco perdido no início com as rotas com o uso do blade.
 
-5.	Pendencias: Gostaria de ter feito a parte de Relatórios para impressa com filtro, mensagem e efeitos visuais e o “Esqueceu a senha”, mas não consegui, como informado acima, o tempo foi escasso.
+5.	Pendencias: Gostaria de ter feito a parte de Relatórios para impressão com filtro, mensagem e efeitos visuais e o “Esqueceu a senha”, mas não consegui, como informado acima, o tempo foi escasso.
 
 ---------------------------------------------------------------------------
 
