@@ -6,23 +6,23 @@
         @endcomponent
         <div class="card">
             <div class="card-body">
-                <div class="row d-flex">
-                    <div class="col d-flex justify-content-start ">
-                        <h1 class="py-4">Lista de Produtos: </h1>
+                <div class="row d-flex flex-md-row flex-column">
+                    <div class="col align-self-center">
+                        <h1 class="py-4 ">Lista de Produtos: </h1>
                     </div>
-                    <div class="col w-100  align-self-center">
-                        <form action="{{ route('product.filter')}}"class="d-flex" method="POST">
+                    <div class="col w-md-100 w-75  align-self-center">
+                        <form action="{{ route('product.filter') }}" class="d-flex" method="POST">
                             @csrf
                             <input class="form-control me-2" type="search" name="filter"
                                 placeholder="Filtre por Nome e/ou Categoria" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Filtrar</button>
                         </form>
                     </div>
-                    <div class="col d-flex justify-content-end align-self-center ">
-                        <a href="{{ route('product.create') }}" class="btn btn-success">Cadastrar novo Produto</a>
+                    <div class="col w-md-75  d-flex my-3 justify-content-center align-self-center ">
+                        <a href="{{ route('product.create') }}" class="btn btn-success w-75">Cadastrar novo Produto</a>
                     </div>
                 </div>
-                <table class="table table-responsive text-center">
+                <table class="table d-none d-md-table table-responsive text-center">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -58,25 +58,31 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="d-flex justify-content-center">
-                    <nav aria-label="NavBar">
-                        <ul class="pagination ">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="d-flex d-md-none ms-3 justify-content-sm-center ">
+                    @component('components.table-responseive', ['products' => $products])
+                    @endcomponent
                 </div>
+                @if (!isset($paginate))
+                    <div class="d-flex justify-content-center">
+                        <nav aria-label="NavBar">
+                            <ul class="pagination ">
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ route('product.filter', 'page=' . 1)}}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                    <li class="page-item"><a class="page-link" href="{{ route('product.filter', 'page=' . $i)}}">{{ $i }}</a></li>
+                                @endfor
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ route('product.filter', 'page=' . $products->lastPage())}}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                @endif
             </div>
         </div>
     </section>

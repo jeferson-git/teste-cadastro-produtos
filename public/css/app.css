@@ -11297,3 +11297,7 @@ textarea.form-control-lg {
 .bg-form-product {
   background-color: darkcyan;
 }
+
+.margin-table-responsive {
+  margin-left: 3rem;
+}
