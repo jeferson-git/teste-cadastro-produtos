@@ -14,7 +14,7 @@ class TagController extends Controller
      */
     public function index(Request $request)
     {
-        $tags = Tag::paginate(10);
+        $tags = Tag::orderBy('created_at', 'desc')->paginate(10);
 
         return view('site.tag', ['tags' => $tags, 'request' => $request->all()]);
     }
@@ -113,6 +113,7 @@ class TagController extends Controller
     public function destroy($id)
     {
         $tag = Tag::find($id);
+        $tag->products()->delete();
         $tag->delete();
 
         return redirect('dashboard/tag');

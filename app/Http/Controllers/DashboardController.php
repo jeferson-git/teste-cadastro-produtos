@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::whereHas('tags')->paginate(10);
+        $products = Product::whereHas('tags')->orderBy('created_at', 'desc')->paginate(10);
 
         return view('site.dashboard', ['products' => $products, 'request' => $request->all()]);
     }
